@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+    <div class="card" style="width: 30rem;">
+        <div class="card-header" style="background-color: #ffef74;">
+            <a href="{% url 'notes_list' %}" style="text-decoration: none; color: black">⭠ &nbsp;Back</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ object.title }}</h5>
+            <p class="card-text">{{ object.description|truncatechars:"20" }}</p>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

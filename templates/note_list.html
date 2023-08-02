@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    {% if object_list %}
+        <div class="div">
+            <div class="row col-12">
+                {% for note in object_list %}
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header" style="background-color: #ffef74;">
+                                &nbsp;
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ note.title }}</h5>
+                                <p class="card-text">{{ note.description|truncatechars:"20" }}</p>
+                            </div>
+                            <div class="row ">
+                                <div class="btn-group btn-group-sm px-4 py-3" role="group"
+                                     aria-label="Default button group">
+                                    <a href="{% url 'notes_delete' note.id %}" type="button"
+                                       class="btn btn-outline-danger"><i
+                                            class="bi bi-trash3-fill"></i></a>
+                                    <a href="{% url 'notes_detail' note.id %}" type="button"
+                                       class="btn btn-outline-info"><i
+                                            class="bi bi-eye-fill"></i></a>
+                                    <a href="{% url 'notes_update' note.id %}" type="button"
+                                       class="btn btn-outline-warning"><i
+                                            class="bi bi-pencil-fill"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    {% else %}
+        <div style="text-align: center">
+            <h1>Create your first note 📝</h1>
+            <a href="{% url 'notes_create' %}" type="button" class="btn btn-lg mt-4" style="background-color: #7fff9d">Create</a>
+
+        </div>
+
+
+
+    {% endif %}
+
+
+
+{% endblock %}

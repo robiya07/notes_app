@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_filters %}
+
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 30rem;">
+            <div class="card-header" style="background-color: #ffef74;">
+                <a href="{% url 'notes_list' %}" style="text-decoration: none; color: black">⭠ &nbsp;Back</a>
+            </div>
+
+            <div class="card-body">
+
+
+                <form method="post" action="{% url 'notes_update' object.id %}">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-warning mt-3">Update</button>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
